@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %} {% load static %} {% block pagecss %}
+<link rel="stylesheet" href="{% static 'main/css/sign.css' %}"> {% endblock %}{% block content %}
+
+
+<div class="row d-flex justify-content-center mt-5">
+    <div class="col-sm-3">
+
+        <h2 class="mb-3">Become An <span class="main-color">Author</span></h2>
+        <p class="text-warning" style="font-size: 12px;">to create an account you have to enter valid details with unique password</p>
+        <form method="POST" novalidate>
+            {% csrf_token %} {% for f in form %}{{f.label}} <br>{{f}} {% endfor %}
+            <button type="submit" class="btn  mt-3" style="width: 100%;background-color:#f87f14;">Submit</button>
+        </form>
+        {% if error is not None %} <span class="text-success mt-3">{{error}}</span> {% endif %}
+
+    </div>
+</div>
+{% endblock %} {% block pagejs %}
+<script src=" {% static 'main/js/signup.js' %} ">
+</script>
+{% endblock %}

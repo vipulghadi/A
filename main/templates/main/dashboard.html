@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %}{% load static %}{% block pagecss %}
+<link rel="stylesheet" href="{% static 'main/css/dashboard.css' %}">{% endblock %} {% block content %}
+
+
+
+<div class="row d-flex justify-content-evenly  mt-5 ">
+    <div class="col-sm-3 mt-5">
+        <div class="card" style="border-radius: 15px;">
+            <div class="card-body text-center">
+                <div class="mt-3 mb-4">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp" class="rounded-circle img-fluid" style="width: 100px;" />
+                </div>
+                <h4 class="mb-2">{{request.user}} </h4>
+                <p class="text-muted mb-4">{% for user in user_info %}{{user.email}}{% endfor %}<span class="mx-2">|</span> </p>
+                <div class="mb-4 pb-2">
+
+
+                </div>
+                <button type="button" class="btn btn-primary btn-rounded btn-lg">
+                        <a href="/addblog"> Write a Blog !</a>
+                      </button>
+                <div class="d-flex justify-content-between text-center mt-5 mb-2">
+
+                </div>
+
+            </div>
+
+
+            </section>
+        </div>
+
+    </div>
+    <div class="col-sm-7 mt-4">
+
+        <h2>Your Last Blogs </h2>
+        <hr> {% for blog in userblogs %}
+        <div class="row blog">
+            <div class="col-sm-12 alert alert-warning">
+                <h5>{{blog.Title}}</h5>
+                <br>
+                <span><button class="btn btn-warning"><a href="{% url 'update' blog.id %}">Edit</a></button> <button class="btn btn-danger"><a href="{% url 'delete' blog.id %}">Delete</a></button></span>
+            </div>
+        </div> {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %} {%load static %} {% block pagecss %}
+<link rel="stylesheet" href="{% static 'main/css/blogs.css' %}"> {% endblock %}{% block content %}
+<div class="row mt-5"></div>{% for blog in blogs %}
+<div class="row mt-5 d-flex justify-content-evenly blog">
+    <div class="col-sm-10">
+
+        <h2>{{ blog.Title}}</h2>
+        <div class="userinfo  d-flex justify-content-end mt-3 mb-5">
+            <h4 style="font-size: 14px; " class="mx-4">Author <span style="color:red">{{blog.author}}</span></h4>
+            <h4 style="font-size: 14px;">Published on <span>{{blog.publish_on}}</span></h4>
+        </div>
+        <p>
+            {{blog.Description}}
+        </p>
+    </div>
+</div> {% endfor %}
+</div>
+<div class="row d-flex justify-content-evenly mt-4">
+    <div class="col-sm-12 loader"></div>
+</div>{% endblock %}

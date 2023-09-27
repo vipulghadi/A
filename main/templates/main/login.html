@@ -1,0 +1,17 @@
+ {% extends 'main/base.html' %} {% load static %}{% block content %} {% block pagecss %}
+<link rel="stylesheet" href="{% static 'main/css/login.css' %}"> {% endblock %}
+<div class="row d-flex justify-content-center mt-5">
+    <div class="col-sm-3 mt-5">
+
+        <h2 class="mb-3">Log In </h2>
+
+        <form method="POST" novalidate>
+            {% csrf_token %} {% for f in form %}{{f.label}} <br>{{f}} {% endfor %}
+            <button type="submit" class="btn  mt-3" style="width: 100%;background-color:#f87f14;">Submit</button>
+            <p class="mt-3" style="font-size: 12px;">don't have account <span><a href="/signup">Sign Up</a></span></p>
+        </form>
+        {% if error is not None %} <span class="text-danger mt-3" style="font-size: 14px;">{{error}}</span> {% endif %}
+
+    </div>
+</div>
+{% endblock %}

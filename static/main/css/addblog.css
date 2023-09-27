@@ -1,0 +1,9 @@
+input {
+    width: 100%;
+    font-size: 26px;
+}
+
+textarea {
+    width: 100%;
+    font-size: 13px;
+}
